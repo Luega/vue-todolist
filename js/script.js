@@ -7,3 +7,31 @@
 
 // MILESTONE 3
 // Predisporre un campo di input testuale e un pulsante "aggiungi": cliccando sul pulsante, il testo digitato viene letto e utilizzato per creare un nuovo todo, che quindi viene aggiunto alla lista dei todo esistenti.
+
+const app = new Vue({
+    el:"#app",
+    data: {
+        textTodoUser: "",
+        todo: []
+    },
+    methods: {
+        addTodo() {
+            if (this.textTodoUser.length > 0)
+            this.todo.push({
+                text: this.textTodoUser,
+                done: false
+            });
+            this.textTodoUser = "";
+        },
+        removeTodo(index) {
+            this.todo.splice(index, 1);
+        },
+        doneTodo(index) {
+            if (this.todo[index].done) {
+                this.todo[index].done = false;   
+            } else {
+                this.todo[index].done = true;
+            }
+        }
+    }
+})

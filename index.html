@@ -5,30 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <title>To Do List</title>
 </head>
 <body>
-    <div class="container">
+    <!-- container -->
+    <div id="app" class="container">
         <div class="box">
+            <!-- header -->
             <header class="header">
                 <h1 class="title">TO DO LIST</h1>
             </header>
+            <!-- main -->
             <main>
+                <!-- input -->
                 <div class="add">
                     <div class="input-box">
-                        <input type="text" placeholder="Aggiungi To do">
-                        <i class="fas fa-plus"></i>
+                        <input type="text" placeholder="Aggiungi To do" v-model="textTodoUser">
+                        <button @click="addTodo">
+                            <i class="fas fa-plus"></i>
+                        </button>
                     </div>
                 </div>
+                <!-- todo-list -->
                 <div class="todo-list">
-                    <ul>
-                        <li>
-                            <h3>Boolean</h3>
-                            <h2>Finire esercitazione TODOLIST</h2>
-                            <h4>Luca Martinelli</h4>
+                    <ul v-if="todo.length > 0">
+                        <!-- to do -->
+                        <li v-for="(todoUser, index) in todo" class="todo">
+                            <h2 :class="{done: todoUser.done}">{{ todoUser.text }}</h2>
+                            <i @click="removeTodo(index)" class="fas fa-times"></i>
+                            <i @click="doneTodo(index)" class="fas fa-check"></i>
                         </li>
                     </ul>
+                    <h2 v-else>Nothing To Do</h2>
                 </div>
             </main>
         </div>

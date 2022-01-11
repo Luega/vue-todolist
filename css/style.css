@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* container */
 .container {
     width: 100%;
     height: 100vh;
@@ -16,7 +17,10 @@
     padding: 3em;
     background-color: white;
     border-radius: 4em;
+    overflow: auto;
+    
 }
+/* input */
 .input-box {
     display: flex;
     justify-content: space-around;
@@ -36,12 +40,32 @@
 .input-box:focus-within {
     border-color: red;
 }
+/* todo-list and to-do */
 .todo-list ul {
     list-style: none;
 }
-.todo-list ul li {
+.todo {
     margin-bottom: 1em;
     padding: 1em;
     background-color: turquoise;
     border-radius: 2em;
+}
+.todo-list h2 {
+    text-align: center;
+}
+li h2 {
+    display: inline-block;
+}
+.todo i {
+    font-size: 2em;
+    float: right;
+}
+.fa-check {
+    margin-right: 1em;
+}
+.todo i:hover {
+    color: red;
+}
+.done {
+text-decoration: line-through;
 }
